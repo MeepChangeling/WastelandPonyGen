@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+p2<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -130,6 +130,7 @@
     var corePersona = "unset"
     var charTraits = "unset"
     var carriedLoad = 0
+    var characterArmor = "unset"
 
 
 
@@ -156,7 +157,8 @@
       //document.getElementById("clothing").innerHTML = clothing
       createOutfit()
       createArmor()
-      document.getElementById("clothing").innerHTML = clothing
+      generateWeapons()
+      document.getElementById("clothing").innerHTML = clothing + " " + characterArmor
       getPersona()
       document.getElementById("personality").innerHTML = personality + " " + weapon
       document.getElementById("jobdescription").innerHTML = jobdescription
@@ -735,60 +737,7 @@
       accessory = getRandomItem(accessories)
       clothing = clothing + " A closer look shows " + p1a + " also has " + accessory + "."
 
-      /* Weapons */
-      dieA = d10()
-      dieB = d10()
-      result = dieA + dieB
-      var condtion = "unset"
-      if (result <= 3) {
-        condtion = "very poor"
-      } else if (result >= 4 && result <= 8) {
-        condtion = "poor"
-      } else if (result >= 9 && result <= 13) {
-        condtion = "average"
-      } else if (result >= 10 && result <= 14) {
-        condtion = "good"
-      } else if (result >= 15) {
-        condtion = "like new"
-      }
 
-
-      die1 = d6() + d6() + d6() + d6() + d6() + d6()
-      die2 = d4()
-      result = die1 / die4;
-      if (result <= 3) {
-        weapon1 = meleeWeapon().toLowerCase()
-        weapon = p1 + " is armed with a " + weapon1 + " in " + condtion + " condition."
-      } else if (result >= 4 && result <= 8) {
-        weapon1 = balisticWeapon()
-        weapon2 = meleeWeapon().toLowerCase()
-        weapon = p1 + " is armed with a " + weapon1 + " and a " + weapon2 + ", both in " + condtion + " condition."
-      } else if (result >= 9 && result <= 11) {
-        weapon1 = balisticWeapon()
-        weapon2 = balisticWeapon()
-        weapon = shortName + " is armed with a " + weapon1 + " and a " + weapon2 + ", both in " + condtion + " condition."
-      } else if (result >= 12 && result <= 14) {
-        weapon1 = balisticWeapon()
-        weapon2 = balisticWeapon()
-        weapon3 = meleeWeapon().toLowerCase()
-        weapon = p1 + " is armed with a " + weapon1 + ", a " + weapon2 + ", and a " + weapon3 + ", both in " + condtion + " condition."
-      } else if (result >= 15 && result <= 17) {
-        weapon1 = energyWeapon()
-        weapon2 = energyWeapon()
-        weapon = p1 + " is armed with a " + weapon1 + " and a " + weapon2 + ", both in " + condtion + " condition."
-      } else if (result >= 18 && result <= 20) {
-        weapon1 = energyWeapon()
-        weapon2 = meleeWeapon().toLowerCase()
-        weapon = p1 + " is armed with a " + weapon1 + " and a " + weapon2 + ", both in " + condtion + " condition."
-      } else if (result >= 21 && result <= 24) {
-        weapon1 = meleeWeapon().toLowerCase()
-        weapon2 = throwWeapon()
-        weapon = p1 + " is armed with a " + weapon1 + " and a " + weapon2 + ", both in " + condtion + " condition."
-      } else if (result >= 25) {
-        weapon1 = meleeWeapon().toLowerCase()
-        weapon2 = explosiveWeapon()
-        weapon = p1 + " is armed with a " + weapon1 + " and a " + weapon2 + ", both in " + condtion + " condition."
-      }
 
     }
     function getAge() {
@@ -1069,7 +1018,62 @@
         counter = counter - 1
       }
     };
+    function generateWeapons() {
+      /* Weapons */
+      dieA = d10()
+      dieB = d10()
+      result = dieA + dieB
+      var condtion = "unset"
+      if (result <= 3) {
+        condtion = "very poor"
+      } else if (result >= 4 && result <= 8) {
+        condtion = "poor"
+      } else if (result >= 9 && result <= 13) {
+        condtion = "average"
+      } else if (result >= 10 && result <= 14) {
+        condtion = "good"
+      } else if (result >= 15) {
+        condtion = "like new"
+      }
 
+
+      die1 = d6() + d6() + d6() + d6() + d6() + d6()
+      die2 = d4()
+      result = die1 / die4;
+      if (result <= 3) {
+        weapon1 = meleeWeapon().toLowerCase()
+        weapon = p1 + " is armed with a " + weapon1 + " in " + condtion + " condition."
+      } else if (result >= 4 && result <= 8) {
+        weapon1 = balisticWeapon()
+        weapon2 = meleeWeapon().toLowerCase()
+        weapon = p1 + " is armed with a " + weapon1 + " and a " + weapon2 + ", both in " + condtion + " condition."
+      } else if (result >= 9 && result <= 11) {
+        weapon1 = balisticWeapon()
+        weapon2 = balisticWeapon()
+        weapon = shortName + " is armed with a " + weapon1 + " and a " + weapon2 + ", both in " + condtion + " condition."
+      } else if (result >= 12 && result <= 14) {
+        weapon1 = balisticWeapon()
+        weapon2 = balisticWeapon()
+        weapon3 = meleeWeapon().toLowerCase()
+        weapon = p1 + " is armed with a " + weapon1 + ", a " + weapon2 + ", and a " + weapon3 + ", both in " + condtion + " condition."
+      } else if (result >= 15 && result <= 17) {
+        weapon1 = energyWeapon()
+        weapon2 = energyWeapon()
+        weapon = p1 + " is armed with a " + weapon1 + " and a " + weapon2 + ", both in " + condtion + " condition."
+      } else if (result >= 18 && result <= 20) {
+        weapon1 = energyWeapon()
+        weapon2 = meleeWeapon().toLowerCase()
+        weapon = p1 + " is armed with a " + weapon1 + " and a " + weapon2 + ", both in " + condtion + " condition."
+      } else if (result >= 21 && result <= 24) {
+        weapon1 = meleeWeapon().toLowerCase()
+        weapon2 = throwWeapon()
+        weapon = p1 + " is armed with a " + weapon1 + " and a " + weapon2 + ", both in " + condtion + " condition."
+      } else if (result >= 25) {
+        weapon1 = meleeWeapon().toLowerCase()
+        weapon2 = explosiveWeapon()
+        weapon = p1 + " is armed with a " + weapon1 + " and a " + weapon2 + ", both in " + condtion + " condition."
+      }
+    };
     //Armor Builder system
     function createOutfit() {
       factionType = document.getElementById('factions').value;
@@ -1740,23 +1744,196 @@
 
       //Limits armor catagories by faction
       if (factionType == "Waster") {
-        baseArmors = ["Leather", "Metal", "Trapper"]
+        baseArmors = ["leather", "metal", "hunter"]
       } else if (factionType == "Raider") {
-        baseArmors = ["Raider", "Leather", "Metal", "Trapper"]
+        baseArmors = ["raider", "leather", "metal", "hunter"]
       } else if (factionType == "Slaver") {
-        baseArmors = ["Raider", "Leather", "Metal", "Trapper", "Combat"]
+        baseArmors = ["raider", "leather", "metal", "hunter", "combat"]
       } else if (factionType == "Townspony") {
-        baseArmors = ["Leather", "Metal", "Combat"]
+        baseArmors = ["leather", "metal", "combat"]
       } else if (factionType == "Explorer") {
-        baseArmors = ["Leather", "Metal", "Combat", "Stable-Tec", "Robot", "Marine"]
+        baseArmors = ["leather", "metal", "combat", "Stable-Tec", "robot", "marine"]
       } else if (factionType == "Mercanary") {
-        baseArmors = ["Leather", "Metal", "Combat", "Robot", "Marine"]
+        baseArmors = ["leather", "metal", "combat", "robot", "marine"]
       } else {
-        baseArmors = ["Leather", "Metal", "Combat", "Stable-Tec", "Trapper", "Robot", "Marine"]
+        baseArmors = ["leather", "metal", "combat", "Stable-Tec", "hunter", "robot", "marine"]
       }
 
+
       //Generates armor
-      
+      die = d100()
+      if (die <= 65) {
+        baseArmor = getRandomItem(baseArmors)
+        chestArmorQuality = armorGrade(baseArmor)
+        armorTypeName = chestArmorQuality.name
+        armorTypeDescription = chestArmorQuality.description
+        armorTypeWeightMod = chestArmorQuality.weight
+        armorTypeDescription = armorTypeDescription.toLowerCase()
+        characterArmor = shortName + "'s " + baseArmor + " armor " + armorTypeDescription + "."
+
+        armorMass = armorWeight(baseArmor)
+        armorMassMin = armorMass.min
+        armorMassMax = armorMass.max
+        hasChest = 1
+        hasFR = 0
+        hasFL = 0
+        hasRR = 0
+        hasRL = 0
+        die1 = d100()
+        if (die1 <= 70) {hasFR = 1}
+        die2 = d100()
+        if (die2 <= 70) {hasFL = 1}
+        die3 = d100()
+        if (die3 <= 70) {hasRR = 1}
+        die4 = d100()
+        if (die4 <= 70) {hasRL = 1}
+        if (hasChest == 1 && hasFR == 0 && hasFL == 0 && hasRR == 0 && hasRL == 0) {
+          characterArmor = characterArmor + " " + p2 + " armor is very incomplete, overing only " + p1a + " chest, back, and sides."
+          chestWeight = getRandomFloat(armorMassMin, armorMassMax)
+          chestWeight = chestWeight * armorTypeWeightMod
+          let armorchestitem = document.createElement("li");
+          armorchestitem.innerHTML = `<span class="boop">Armor, Chest — </span> 1 x ${armorTypeName} ${baseArmor} Chest - ` + chestWeight.toFixed(2) + ` lbs.`;
+          inventoryList.appendChild(armorchestitem);
+        } else if (hasChest == 1 && hasFR == 1 && hasFL == 0 && hasRR == 0 && hasRL == 0) {
+          characterArmor = characterArmor + " " + p2 + " armor is very incomplete, consisting of only the chest plate and front-right greave."
+          chestWeight = getRandomFloat(armorMassMin, armorMassMax)
+          chestWeight = chestWeight * armorTypeWeightMod
+          let armorchestitem = document.createElement("li");
+          armorchestitem.innerHTML = `<span class="boop">Armor, Chest — </span> 1 x ${armorTypeName} ${baseArmor} Chest - ` + chestWeight.toFixed(2) + ` lbs.`;
+          inventoryList.appendChild(armorchestitem);
+          FRlegWeight = getRandomFloat(armorMassMin, armorMassMax)
+          FRlegWeight = (FRlegWeight / 4) * armorTypeWeightMod
+          let FRlegWeightitem = document.createElement("li");
+          FRlegWeightitem.innerHTML = `<span class="boop">Armor, Leg — </span> 1 x ${armorTypeName} ${baseArmor} Greave - ` + FRlegWeight.toFixed(2) + ` lbs.`;
+          inventoryList.appendChild(FRlegWeightitem);
+        } else if (hasChest == 1 && hasFR == 0 && hasFL == 1 && hasRR == 0 && hasRL == 0) {
+          characterArmor = characterArmor + " " + p2 + " armor is very incomplete, consisting of only the chest plate and front-left greave."
+          chestWeight = getRandomFloat(armorMassMin, armorMassMax)
+          chestWeight = chestWeight * armorTypeWeightMod
+          let armorchestitem = document.createElement("li");
+          armorchestitem.innerHTML = `<span class="boop">Armor, Chest — </span> 1 x ${armorTypeName} ${baseArmor} Chest - ` + chestWeight.toFixed(2) + ` lbs.`;
+          inventoryList.appendChild(armorchestitem);
+          FRlegWeight = getRandomFloat(armorMassMin, armorMassMax)
+          FRlegWeight = (FRlegWeight / 4) * armorTypeWeightMod
+          let FRlegWeightitem = document.createElement("li");
+          FRlegWeightitem.innerHTML = `<span class="boop">Armor, Leg — </span> 1 x ${armorTypeName} ${baseArmor} Greave - ` + FRlegWeight.toFixed(2) + ` lbs.`;
+          inventoryList.appendChild(FRlegWeightitem);
+        } else if (hasChest == 1 && hasFR == 0 && hasFL == 0 && hasRR == 1 && hasRL == 0) {
+          characterArmor = characterArmor + " " + p2 + " armor is very incomplete, consisting of only the chest plate and rear-right greave."
+          chestWeight = getRandomFloat(armorMassMin, armorMassMax)
+          chestWeight = chestWeight * armorTypeWeightMod
+          let armorchestitem = document.createElement("li");
+          armorchestitem.innerHTML = `<span class="boop">Armor, Chest — </span> 1 x ${armorTypeName} ${baseArmor} Chest - ` + chestWeight.toFixed(2) + ` lbs.`;
+          inventoryList.appendChild(armorchestitem);
+          FRlegWeight = getRandomFloat(armorMassMin, armorMassMax)
+          FRlegWeight = (FRlegWeight / 4) * armorTypeWeightMod
+          let FRlegWeightitem = document.createElement("li");
+          FRlegWeightitem.innerHTML = `<span class="boop">Armor, Leg — </span> 1 x ${armorTypeName} ${baseArmor} Greave - ` + FRlegWeight.toFixed(2) + ` lbs.`;
+          inventoryList.appendChild(FRlegWeightitem);
+        } else if (hasChest == 1 && hasFR == 0 && hasFL == 0 && hasRR == 0 && hasRL == 1) {
+          characterArmor = characterArmor + " " + p2 + " armor is very incomplete, consisting of only the chest plate and rear-left greave."
+          chestWeight = getRandomFloat(armorMassMin, armorMassMax)
+          chestWeight = chestWeight * armorTypeWeightMod
+          let armorchestitem = document.createElement("li");
+          armorchestitem.innerHTML = `<span class="boop">Armor, Chest — </span> 1 x ${armorTypeName} ${baseArmor} Chest - ` + chestWeight.toFixed(2) + ` lbs.`;
+          inventoryList.appendChild(armorchestitem);
+          FRlegWeight = getRandomFloat(armorMassMin, armorMassMax)
+          FRlegWeight = (FRlegWeight / 4) * armorTypeWeightMod
+          let FRlegWeightitem = document.createElement("li");
+          FRlegWeightitem.innerHTML = `<span class="boop">Armor, Leg — </span> 1 x ${armorTypeName} ${baseArmor} Greave - ` + FRlegWeight.toFixed(2) + ` lbs.`;
+          inventoryList.appendChild(FRlegWeightitem);
+        } else if (hasChest == 1 && hasFR == 1 && hasFL == 0 && hasRR == 0 && hasRL == 1) {
+          characterArmor = characterArmor + " " + p2 + " armor is incomplete, consisting of the chest plate, front-right and rear-left greaves."
+          chestWeight = getRandomFloat(armorMassMin, armorMassMax)
+          chestWeight = chestWeight * armorTypeWeightMod
+          let armorchestitem = document.createElement("li");
+          armorchestitem.innerHTML = `<span class="boop">Armor, Chest — </span> 1 x ${armorTypeName} ${baseArmor} Chest - ` + chestWeight.toFixed(2) + ` lbs.`;
+          inventoryList.appendChild(armorchestitem);
+          FRlegWeight = getRandomFloat(armorMassMin, armorMassMax)
+          FRlegWeight = (FRlegWeight / 4) * armorTypeWeightMod
+          let FRlegWeightitem = document.createElement("li");
+          FRlegWeightitem.innerHTML = `<span class="boop">Armor, Leg — </span> 2 x ${armorTypeName} ${baseArmor} Greave - ` + (FRlegWeight.toFixed(2)) * 2 + ` lbs.`;
+          inventoryList.appendChild(FRlegWeightitem);
+        } else if (hasChest == 1 && hasFR == 0 && hasFL == 1 && hasRR == 1 && hasRL == 0) {
+          characterArmor = characterArmor + " " + p2 + " armor is incomplete, consisting of the chest plate, front-left and rear-right greaves."
+          chestWeight = getRandomFloat(armorMassMin, armorMassMax)
+          chestWeight = chestWeight * armorTypeWeightMod
+          let armorchestitem = document.createElement("li");
+          armorchestitem.innerHTML = `<span class="boop">Armor, Chest — </span> 1 x ${armorTypeName} ${baseArmor} Chest - ` + chestWeight.toFixed(2) + ` lbs.`;
+          inventoryList.appendChild(armorchestitem);
+          FRlegWeight = getRandomFloat(armorMassMin, armorMassMax)
+          FRlegWeight = (FRlegWeight / 4) * armorTypeWeightMod
+          let FRlegWeightitem = document.createElement("li");
+          FRlegWeightitem.innerHTML = `<span class="boop">Armor, Leg — </span> 2 x ${armorTypeName} ${baseArmor} Greave - ` + (FRlegWeight.toFixed(2)) * 2 + ` lbs.`;
+          inventoryList.appendChild(FRlegWeightitem);
+        } else if (hasChest == 1 && hasFR == 1 && hasFL == 1 && hasRR == 0 && hasRL == 0) {
+          characterArmor = characterArmor + " " + p2 + " armor is incomplete, consisting of the chest plate, and the front greaves."
+          chestWeight = getRandomFloat(armorMassMin, armorMassMax)
+          chestWeight = chestWeight * armorTypeWeightMod
+          let armorchestitem = document.createElement("li");
+          armorchestitem.innerHTML = `<span class="boop">Armor, Chest — </span> 1 x ${armorTypeName} ${baseArmor} Chest - ` + chestWeight.toFixed(2) + ` lbs.`;
+          inventoryList.appendChild(armorchestitem);
+          FRlegWeight = getRandomFloat(armorMassMin, armorMassMax)
+          FRlegWeight = (FRlegWeight / 4) * armorTypeWeightMod
+          let FRlegWeightitem = document.createElement("li");
+          FRlegWeightitem.innerHTML = `<span class="boop">Armor, Leg — </span> 2 x ${armorTypeName} ${baseArmor} Greave - ` + (FRlegWeight.toFixed(2)) * 2 + ` lbs.`;
+          inventoryList.appendChild(FRlegWeightitem);
+        } else if (hasChest == 1 && hasFR == 0 && hasFL == 0 && hasRR == 1 && hasRL == 1) {
+          characterArmor = characterArmor + " " + p2 + " armor is incomplete, consisting of the chest plate, and the hind greaves."
+          chestWeight = getRandomFloat(armorMassMin, armorMassMax)
+          chestWeight = chestWeight * armorTypeWeightMod
+          let armorchestitem = document.createElement("li");
+          armorchestitem.innerHTML = `<span class="boop">Armor, Chest — </span> 1 x ${armorTypeName} ${baseArmor} Chest - ` + chestWeight.toFixed(2) + ` lbs.`;
+          inventoryList.appendChild(armorchestitem);
+          FRlegWeight = getRandomFloat(armorMassMin, armorMassMax)
+          FRlegWeight = (FRlegWeight / 4) * armorTypeWeightMod
+          let FRlegWeightitem = document.createElement("li");
+          FRlegWeightitem.innerHTML = `<span class="boop">Armor, Leg — </span> 2 x ${armorTypeName} ${baseArmor} Greave - ` + (FRlegWeight.toFixed(2)) * 2 + ` lbs.`;
+          inventoryList.appendChild(FRlegWeightitem);
+        } else if (hasChest == 1 && hasFR == 0 && hasFL == 1 && hasRR == 1 && hasRL == 1) {
+          characterArmor = characterArmor + " " + p2 + " armor is nearly complete, consisting of the chest plate, hind greaves, and the front-left greave."
+          chestWeight = getRandomFloat(armorMassMin, armorMassMax)
+          chestWeight = chestWeight * armorTypeWeightMod
+          let armorchestitem = document.createElement("li");
+          armorchestitem.innerHTML = `<span class="boop">Armor, Chest — </span> 1 x ${armorTypeName} ${baseArmor} Chest - ` + chestWeight.toFixed(2) + ` lbs.`;
+          inventoryList.appendChild(armorchestitem);
+          FRlegWeight = getRandomFloat(armorMassMin, armorMassMax)
+          FRlegWeight = (FRlegWeight / 4) * armorTypeWeightMod
+          let FRlegWeightitem = document.createElement("li");
+          FRlegWeightitem.innerHTML = `<span class="boop">Armor, Leg — </span> 3 x ${armorTypeName} ${baseArmor} Greave - ` + (FRlegWeight.toFixed(2)) * 3 + ` lbs.`;
+          inventoryList.appendChild(FRlegWeightitem);
+        } else if (hasChest == 1 && hasFR == 1 && hasFL == 0 && hasRR == 1 && hasRL == 1) {
+          characterArmor = characterArmor + " " + p2 + " armor is nearly complete, consisting of the chest plate, hind greaves, and the front-right greave."
+          chestWeight = getRandomFloat(armorMassMin, armorMassMax)
+          chestWeight = chestWeight * armorTypeWeightMod
+          let armorchestitem = document.createElement("li");
+          armorchestitem.innerHTML = `<span class="boop">Armor, Chest — </span> 1 x ${armorTypeName} ${baseArmor} Chest - ` + chestWeight.toFixed(2) + ` lbs.`;
+          inventoryList.appendChild(armorchestitem);
+          FRlegWeight = getRandomFloat(armorMassMin, armorMassMax)
+          FRlegWeight = (FRlegWeight / 4) * armorTypeWeightMod
+          let FRlegWeightitem = document.createElement("li");
+          FRlegWeightitem.innerHTML = `<span class="boop">Armor, Leg — </span> 3 x ${armorTypeName} ${baseArmor} Greave - ` + (FRlegWeight.toFixed(2)) * 3 + ` lbs.`;
+          inventoryList.appendChild(FRlegWeightitem);
+        } else if (hasChest == 1 && hasFR == 1 && hasFL == 1 && hasRR == 1 && hasRL == 1) {
+          characterArmor = characterArmor + " " + p2 + " armor is complete."
+          chestWeight = getRandomFloat(armorMassMin, armorMassMax)
+          chestWeight = chestWeight * armorTypeWeightMod
+          let armorchestitem = document.createElement("li");
+          armorchestitem.innerHTML = `<span class="boop">Armor, Chest — </span> 1 x ${armorTypeName} ${baseArmor} Chest - ` + chestWeight.toFixed(2) + ` lbs.`;
+          inventoryList.appendChild(armorchestitem);
+          FRlegWeight = getRandomFloat(armorMassMin, armorMassMax)
+          FRlegWeight = (FRlegWeight / 4) * armorTypeWeightMod
+          let FRlegWeightitem = document.createElement("li");
+          FRlegWeightitem.innerHTML = `<span class="boop">Armor, Leg — </span> 4 x ${armorTypeName} ${baseArmor} Greave - ` + (FRlegWeight.toFixed(2)) * 4 + ` lbs.`;
+          inventoryList.appendChild(FRlegWeightitem);
+        }
+        console.log(characterArmor)
+        //chests weight is: chest = getRandomFloat(armorMassMin, armorMassMax), then chest = chest * armorTypeWeightMod
+        //legs are: leg = getRandomFloat(armorMassMin, armorMassMax), then leg = (leg / 4) * armorTypeWeightMod
+      } else {
+        //piecemeal system
+      }
+
 
 
 
@@ -2883,8 +3060,114 @@
       color = getRandomItem(colors)
       return color
     };
-
-
+    function armorGrade(baseArmor) {
+      baseArmor = baseArmor
+      if (baseArmor == "leather") {
+        qualities = [
+          {name: "Boiled", description: "has been Thickened for extra protection, and is slightly stiff", weight: 1},
+          {name: "Patchwork", description: "is Haphazardly stitched together from various sources", weight: 0.8},
+          {name: "Scrap-steel Reinforced", description: "with Metal plates added here and there for extra durability and protection", weight: 1.65},
+          {name: "Sun-Cracked", description: "is Brittle and worn from exposure", weight: 0.9},
+          {name: "Tribal-Marked", description: "is Decorated with war paint, carvings, or fetishes", weight: 1},
+          {name: "Worn-Down", description: "is Old, stretched, and barely holding together", weight: 0.85}
+        ]
+      } else if (baseArmor == "metal") {
+        qualities = [
+          {name: "Rust-Pitted", description: "has been weakened by rust, but is still functional", weight: 0.95},
+          {name: "Hammered-Plate", description: "was forged and bears plenty of hammermarks from the process", weight: 1},
+          {name: "Bolted", description: "is renforced with extra plates bolted to the underlayer", weight: 1.8},
+          {name: "Welded", description: "is made from Multiple scavenged parts fused into a single suit", weight: 1},
+          {name: "Polished", description: "is Surprisingly well-maintained and shiny", weight: 1},
+          {name: "Makeshift", description: "Looks like it was put together in a hurry", weight: 1.4}
+        ]
+      } else if (baseArmor == "combat") {
+        qualities = [
+          {name: "Faded-Camouflage", description: "still has its old military paint", weight: 1},
+          {name: "Bullet-Dented", description: "shows signs of having been in plenty of fights", weight: 1},
+          {name: "Kevlar-Padded", description: "notably has Extra protection from small arms fire", weight: 1.2},
+          {name: "Reinforced", description: "is Bolstered with scrap metal plating", weight: 1.3},
+          {name: "Scavenged", description: "was Clearly repurposed from a broken set", weight: 1.2},
+          {name: "Tactical", description: "has been Fitted with custom straps, holsters, or pouches", weight: 1.2}
+        ]
+      } else if (baseArmor == "Stable-Tec") {
+        qualities = [
+          {name: "Factory-Issue", description: "Looks fresh off the assembly line", weight: 1},
+          {name: "Scratched & Scuffed", description: "is worn but still has plenty of life left in it", weight: 0.95},
+          {name: "Prototype", description: "is An experimental variant with unique modifications", weight: 1.2},
+          {name: "Overhauled", description: "has been renforced for more serious proection", weight: 1.45},
+          {name: "Modified", description: "has several small alterations to augment its capabilities", weight: 1.1},
+          {name: "Personalized", description: "has been given a personal touch", weight: 1.1}
+        ]
+      } else if (baseArmor == "hunter") {
+        qualities = [
+          {name: "Bone-Plated", description: "is Reinforced with the bones of wasteland creatures", weight: 1},
+          {name: "Treated-Hide", description: "has been Carefully tanned for extra durability", weight: 1},
+          {name: "Fur-Lined", description: "Offers warmth as well as protection", weight: 1.4},
+          {name: "Barbaric", description: "is Covered in war paint, spikes, and primitive designs", weight: 1.2},
+          {name: "Nomad", description: "is Lightweight, designed for travel and survival", weight: 0.75},
+          {name: "Hoof-Stitched", description: "was Carefully assembled with expert craftsmanship", weight: 0.85}
+        ]
+      } else if (baseArmor == "robot") {
+        qualities = [
+          {name: "Servo-Assisted", description: "joint's retain some of the robot's servos, assisting with endurence", weight: 1.4},
+          {name: "Skeletonized", description: "has been stripped of all non-eccential parts", weight: 0.7},
+          {name: "Jury-Rigged", description: "is something of a bodge and looks like it might fall appart", weight: 0.65},
+          {name: "Sentry-Grade", description: "is made from scrapped millitary robots", weight: 1.2},
+          {name: "Powered", description: "is actualy a suit of power armor created from old robot parts", weight: 1.8},
+          {name: "Piecemeal", description: "has been made from many diffrnet kinds of robot", weight: 1.2}
+        ]
+      } else if (baseArmor == "marine") {
+        qualities = [
+          {name: "Salt-Worn", description: "has been corroded by exposure to the ocean", weight: 0.85},
+          {name: "Sealed", description: "is still water tight", weight: 1},
+          {name: "Kevlar-Reinforced", description: "has been given additional kevlar padding to protect against small arms fire", weight: 1.3},
+          {name: "Experimental", description: "is a rare prototype of the next generation Amphibious Assult Armor", weight: 1.1},
+          {name: "Heavy-Duty", description: "was built for a pointmare, and has additional plating", weight: 1.45},
+          {name: "Intact", description: "is practicaly new, with all its features intact", weight: 1},
+        ]
+      } else if (baseArmor == "raider") {
+        qualities = [
+          {name: "Spiked", description: "is Covered in jagged spikes or nails, meant to wound attackers", weight: 1},
+          {name: "Barbed", description: "is Wrapped in barbed wire for extra intimidation", weight: 1.2},
+          {name: "Scrap-Welded", description: "has been renforced with scrap metal", weight: 1.5},
+          {name: "Patchwork", description: "is A stitched-together nightmare of various armor types", weight: 1},
+          {name: "Bone-Plated", description: "is Reinforced with the bones of animals—or past victims", weight: 1.2},
+          {name: "Duct-Taped", description: "is litteraly held togeather with ducktape", weight: 1},
+          {name: "Gore-Streaked", description: "is stained with blood", weight: 1},
+          {name: "Bloodstained", description: "is Battle-worn and never washed", weight: 1},
+          {name: "Trophy-Laden", description: "has been Decorated with enemy skulls, ears, or fingers", weight: 1.2},
+          {name: "Scorched", description: "has been burnt in many places", weight: 1},
+          {name: "Tribal-Scarred", description: "has been Painted and etched with gang symbols and war marks", weight: 1},
+          {name: "Raider Chic", description: "is a chaotic mess of spikes, chains, and punkish style", weight: 1},
+          {name: "Psycho-Marked", description: "is covered with disturbing messages and crude symbols", weight: 1},
+          {name: "Rebar-Reinforced", description: "has been covered in chunks of rebar for extra protection", weight: 1.6},
+          {name: "Chain-Bound", description: "is held togeather with heavy metal chains", weight: 1}
+        ]
+      }
+      qualityArray = getRandomItem(qualities)
+      return qualityArray
+    };
+    function armorWeight(baseArmor) {
+      baseArmor = baseArmor
+      if (baseArmor == "leather") {
+        weightRange = [{min: 5, max: 8}]
+      } else if (baseArmor == "metal") {
+        weightRange = [{min: 8, max: 12}]
+      } else if (baseArmor == "combat") {
+        weightRange = [{min: 7, max: 9}]
+      } else if (baseArmor == "Stable-Tec") {
+        weightRange = [{min: 4, max: 6}]
+      } else if (baseArmor == "hunter") {
+        weightRange = [{min: 4, max: 7}]
+      } else if (baseArmor == "robot") {
+        weightRange = [{min: 9, max: 12}]
+      } else if (baseArmor == "marine") {
+        weightRange = [{min: 10, max: 12}]
+      } else if (baseArmor == "raider") {
+        weightRange = [{min: 4, max: 6}]
+      }
+      return weightRange
+    };
     //Pistols
     //SMGs
     //RIFLES
